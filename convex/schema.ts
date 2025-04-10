@@ -10,3 +10,6 @@ export default defineSchema({
         clerkId: v.string(),
     }).index("by_clerk_id",["clerkId"]),
 })
+
+
+// https://legal-shiner-74.clerk.accounts.dev
