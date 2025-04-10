@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.14.2",
+    "@stream-io/node-sdk": "^0.4.22",
+    "@stream-io/video-react-sdk": "^1.14.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "convex": "^1.23.0",
