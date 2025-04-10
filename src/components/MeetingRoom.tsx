@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MeetingPage = () => {
+const MeetingRoom = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const MeetingPage = () => {
   )
 }
 
-export default MeetingPage
+export default MeetingRoom

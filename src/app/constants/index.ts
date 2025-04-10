@@ -41,7 +41,7 @@ export const QUICK_ACTIONS = [
     description: "Enter via invitation link",
     color: "purple-500",
     gradient: "from-purple-500/25 via-purple-500/15 to-purple-500/5",
-  },
+},
   {
     icon: Calendar,
     title: "Schedule",
