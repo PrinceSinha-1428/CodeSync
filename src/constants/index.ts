@@ -33,28 +33,28 @@ export const QUICK_ACTIONS = [
     title: "New Call",
     description: "Start an instant call",
     color: "primary",
-    gradient: "from-primary/25 via-primary/15 to-primary/5",
+    gradient: "from-primary/25 via-primary/15 to-primary/35",
   },
   {
     icon: Users,
     title: "Join Interview",
     description: "Enter via invitation link",
     color: "purple-500",
-    gradient: "from-purple-500/25 via-purple-500/15 to-purple-500/5",
+    gradient: "from-purple-500/25 via-purple-500/15 to-purple-500/35",
 },
   {
     icon: Calendar,
     title: "Schedule",
     description: "Plan upcoming interviews",
     color: "blue-500",
-    gradient: "from-blue-500/25 via-blue-500/15 to-blue-500/5",
+    gradient: "from-blue-500/25 via-blue-500/15 to-blue-500/35",
   },
   {
     icon: Clock,
     title: "Recordings",
     description: "Access past interviews",
     color: "orange-500",
-    gradient: "from-orange-500/25 via-orange-500/15 to-orange-500/5",
+    gradient: "from-orange-500/25 via-orange-500/15 to-orange-500/35",
   },
 ];
 

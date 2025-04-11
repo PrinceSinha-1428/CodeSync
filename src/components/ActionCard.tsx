@@ -1,10 +1,18 @@
 import { QuickActionType } from "@/constants";
 import { Card } from "./ui/card";
 
+
+
+// from-primary/25 via-primary/15 to-primary/35
+// from-purple-500/25 via-purple-500/15 to-purple-500/35
+// from-blue-500/25 via-blue-500/15 to-blue-500/35
+// from-orange-500/25 via-orange-500/15 to-orange-500/35
+
 interface ActionCardProps {
   action: QuickActionType;
   onClick: () => void;
 }
+
 
 const ActionCard = ({ action, onClick }: ActionCardProps) => {
   return (
@@ -13,7 +21,7 @@ const ActionCard = ({ action, onClick }: ActionCardProps) => {
       onClick={onClick}
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-r ${action.gradient} opacity-100 group-hover:opacity-50 transition-opacity`}
+        className={`absolute inset-0 bg-gradient-to-br ${action.gradient} opacity-100 group-hover:opacity-50 transition-opacity`}
       />
       <div className="relative p-6 size-full">
         <div className="space-y-3">
