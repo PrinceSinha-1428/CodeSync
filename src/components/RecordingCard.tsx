@@ -1,11 +1,11 @@
 import { CallRecording } from '@stream-io/video-react-sdk'
 import React from 'react'
 import toast from 'react-hot-toast';
-import {format} from 'date-fns'
 import { calculateRecordingDuration } from '@/lib/utils';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 import { CalendarIcon, ClockIcon, CopyIcon, PlayIcon } from 'lucide-react';
 import { Button } from './ui/Button';
+import { format } from 'date-fns'
 
 const RecordingCard = ({recording}:{recording: CallRecording}) => {
     const handleCopyLink = async () => {
