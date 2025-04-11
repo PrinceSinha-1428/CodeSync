@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from './ui/resizable';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
 import { Button } from './ui/Button';
+import EndCallButton from './EndCallButton';
 
 const MeetingRoom = () => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const MeetingRoom = () => {
                             <Button variant={"outline"} size={"icon"} className='size-10' onClick={() => setShowParticipants(!showParticipants)}>
                                 <UsersIcon className='size-4' />
                             </Button>
-                            <button>end call btn</button>
+                           <EndCallButton/>
                         </div>
                   </div>
               </div>
