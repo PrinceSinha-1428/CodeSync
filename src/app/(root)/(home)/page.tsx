@@ -1,6 +1,5 @@
 "use client";
 
-import { QUICK_ACTIONS } from "@/app/constants";
 import ActionCard from "@/components/ActionCard";
 import { useUserRole } from "@/hooks/useUserRole";
 import { useState } from "react";
@@ -8,31 +7,30 @@ import { api } from "../../../../convex/_generated/api";
 import { useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
 import MeetingModal from "@/components/MeetingModal";
-
+import { QUICK_ACTIONS } from "@/constants";
 
 export default function Home() {
   const router = useRouter();
-  const {isInterviewer,isCandidate,isLoading} = useUserRole();
+  const { isInterviewer, isCandidate, isLoading } = useUserRole();
   const interviews = useQuery(api.interviews.getMyInterviews);
   const [showModal, setShowModal] = useState(false);
-  const [modalType,setModalType] = useState<"start" | "join">();
-  const handleQuickAction  = (title: string) => {
-    switch(title){
-      case "New Call" :
+  const [modalType, setModalType] = useState<"start" | "join">();
+  const handleQuickAction = (title: string) => {
+    switch (title) {
+      case "New Call":
         setModalType("start");
         setShowModal(true);
         break;
-      case "Join Interview" :
+      case "Join Interview":
         setModalType("join");
         setShowModal(true);
         break;
       default:
-        router.push(`/${title.toLowerCase()}`)
-
+        router.push(`/${title.toLowerCase()}`);
     }
   };
 
-  if(isLoading) return <p>Loading....</p>
+  if (isLoading) return <p>Loading....</p>;
 
   return (
     <div className="container max-w-7xl mx-auto p-6">
@@ -41,31 +39,34 @@ export default function Home() {
           Welcome Back!
         </h1>
         <p className="text-muted-foreground mt-2">
-          {isInterviewer ? "Manage your interviews and review candidates effectively" : "Access your upcoming interviews and preperations" }
+          {isInterviewer
+            ? "Manage your interviews and review candidates effectively"
+            : "Access your upcoming interviews and preperations"}
         </p>
       </div>
       {isInterviewer ? (
         <>
-        <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-6">
-         {QUICK_ACTIONS.map((action) => (
-          <ActionCard key={action.title} action={action} onClick={() => handleQuickAction(action.title)} />
-         ))}
-        </div>
-        <MeetingModal
+          <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {QUICK_ACTIONS.map((action) => (
+              <ActionCard
+                key={action.title}
+                action={action}
+                onClick={() => handleQuickAction(action.title)}
+              />
+            ))}
+          </div>
+          <MeetingModal
             isOpen={showModal}
             onClose={() => setShowModal(false)}
-            title={modalType === 'join' ? "Join Meeting" : "Start Meeting"}
-            isJoinMeeting={modalType === 'join'}
-        />
+            title={modalType === "join" ? "Join Meeting" : "Start Meeting"}
+            isJoinMeeting={modalType === "join"}
+          />
         </>
       ) : (
         <>
-        <div>
-          candidate views goes here
-        </div>
+          <div>candidate views goes here</div>
         </>
       )}
-
     </div>
   );
 }
