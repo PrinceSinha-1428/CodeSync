@@ -1,27 +1,27 @@
-import { CallRecording } from '@stream-io/video-react-sdk'
-import React from 'react'
-import toast from 'react-hot-toast';
-import { calculateRecordingDuration } from '@/lib/utils';
-import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
-import { CalendarIcon, ClockIcon, CopyIcon, PlayIcon } from 'lucide-react';
-import { Button } from './ui/Button';
-import { format } from 'date-fns'
+import { CallRecording } from "@stream-io/video-react-sdk";
+import React from "react";
+import toast from "react-hot-toast";
+import { calculateRecordingDuration } from "@/lib/utils";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+import { CalendarIcon, ClockIcon, CopyIcon, PlayIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import { format } from "date-fns";
 
-const RecordingCard = ({recording}:{recording: CallRecording}) => {
-    const handleCopyLink = async () => {
-        try {
-          await navigator.clipboard.writeText(recording.url);
-          toast.success("Recording link copied to clipboard");
-        } catch (error) {
-          toast.error("Failed to copy link to clipboard");
-        }
-      };
+const RecordingCard = ({ recording }: { recording: CallRecording }) => {
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(recording.url);
+      toast.success("Recording link copied to clipboard");
+    } catch (error) {
+      toast.error("Failed to copy link to clipboard");
+    }
+  };
 
-    const formattedStartTime = recording.start_time
+  const formattedStartTime = recording.start_time
     ? format(new Date(recording.start_time), "MMM d, yyyy, hh:mm a")
     : "Unknown";
 
-    const duration =
+  const duration =
     recording.start_time && recording.end_time
       ? calculateRecordingDuration(recording.start_time, recording.end_time)
       : "Unknown duration";
@@ -57,7 +57,10 @@ const RecordingCard = ({recording}:{recording: CallRecording}) => {
         </div>
       </CardContent>
       <CardFooter className="gap-2">
-        <Button className="flex-1" onClick={() => window.open(recording.url, "_blank")}>
+        <Button
+          className="flex-1"
+          onClick={() => window.open(recording.url, "_blank")}
+        >
           <PlayIcon className="size-4 mr-2" />
           Play Recording
         </Button>
@@ -66,7 +69,7 @@ const RecordingCard = ({recording}:{recording: CallRecording}) => {
         </Button>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default RecordingCard
+export default RecordingCard;

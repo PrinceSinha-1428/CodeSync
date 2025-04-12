@@ -17,9 +17,15 @@ import { ScrollArea } from "./ui/scroll-area";
 import { getInterviewerInfo } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { format } from "date-fns";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 import { Textarea } from "./ui/textarea";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 
 function CommentDialog({ interviewId }: { interviewId: Id<"interviews"> }) {
@@ -29,7 +35,9 @@ function CommentDialog({ interviewId }: { interviewId: Id<"interviews"> }) {
 
   const addComment = useMutation(api.comments.addComment);
   const users = useQuery(api.users.getUsers);
-  const existingComments = useQuery(api.comments.getAllComments, { interviewId });
+  const existingComments = useQuery(api.comments.getAllComments, {
+    interviewId,
+  });
 
   const handleSubmit = async () => {
     if (!comment.trim()) return toast.error("Please enter comment");
@@ -84,7 +92,8 @@ function CommentDialog({ interviewId }: { interviewId: Id<"interviews"> }) {
               <div className="flex items-center justify-between">
                 <h4 className="text-sm font-medium">Previous Comments</h4>
                 <Badge variant="outline">
-                  {existingComments.length} Comment{existingComments.length !== 1 ? "s" : ""}
+                  {existingComments.length} Comment
+                  {existingComments.length !== 1 ? "s" : ""}
                 </Badge>
               </div>
 
@@ -92,25 +101,40 @@ function CommentDialog({ interviewId }: { interviewId: Id<"interviews"> }) {
               <ScrollArea className="h-[240px]">
                 <div className="space-y-4">
                   {existingComments.map((comment, index) => {
-                    const interviewer = getInterviewerInfo(users, comment.interviewerId);
+                    const interviewer = getInterviewerInfo(
+                      users,
+                      comment.interviewerId
+                    );
                     return (
-                      <div key={index} className="rounded-lg border p-4 space-y-3">
+                      <div
+                        key={index}
+                        className="rounded-lg border p-4 space-y-3"
+                      >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             <Avatar className="h-8 w-8">
                               <AvatarImage src={interviewer.image} />
-                              <AvatarFallback>{interviewer.initials}</AvatarFallback>
+                              <AvatarFallback>
+                                {interviewer.initials}
+                              </AvatarFallback>
                             </Avatar>
                             <div>
-                              <p className="text-sm font-medium">{interviewer.name}</p>
+                              <p className="text-sm font-medium">
+                                {interviewer.name}
+                              </p>
                               <p className="text-xs text-muted-foreground">
-                                {format(comment._creationTime, "MMM d, yyyy • h:mm a")}
+                                {format(
+                                  comment._creationTime,
+                                  "MMM d, yyyy • h:mm a"
+                                )}
                               </p>
                             </div>
                           </div>
                           {renderStars(comment.rating)}
                         </div>
-                        <p className="text-sm text-muted-foreground">{comment.content}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {comment.content}
+                        </p>
                       </div>
                     );
                   })}
@@ -130,7 +154,9 @@ function CommentDialog({ interviewId }: { interviewId: Id<"interviews"> }) {
                 <SelectContent>
                   {[1, 2, 3, 4, 5].map((value) => (
                     <SelectItem key={value} value={value.toString()}>
-                      <div className="flex items-center gap-2">{renderStars(value)}</div>
+                      <div className="flex items-center gap-2">
+                        {renderStars(value)}
+                      </div>
                     </SelectItem>
                   ))}
                 </SelectContent>
