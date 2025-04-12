@@ -14,6 +14,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { CalendarIcon, CheckCircle2Icon, ClockIcon, XCircleIcon } from 'lucide-react'
 import {format} from 'date-fns'
+import CommentDialog from '@/components/CommentDialog'
 
 
 
